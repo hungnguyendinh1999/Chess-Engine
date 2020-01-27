@@ -1,5 +1,5 @@
 import javax.swing.*;
-public class Main {
+public class Chess {
 
     public static void main(String[] args) {
         // Create frame

@@ -1,3 +1,17 @@
+/*******************************************************
+ * Owner: Hung Dinh Nguyen
+ * Email:  HungNguyen2@clarku.edu
+ *
+ * UserInterface.java to work on the front-end of the
+ * chess engine. This includes:
+ * 1. Board
+ * 2. Chess Piece interaction (MouseListener)
+ * 3. Possible Move of a clicked Chess Piece
+ * 4. Graphic for 'Check'-ing a King
+ * 5. Image of each chess piece
+ *
+ *******************************************************/
+
 import org.w3c.dom.css.Rect;
 
 import javax.swing.*;
@@ -16,6 +30,7 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
         this.addMouseMotionListener(this);
         // Set Board
         // makeChessBoard();
+
         // Drawing
         G.setColor(Color.RED);
         G.fillRect(x, y, 100, 200);
@@ -65,10 +80,6 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 
     @Override
     public void mouseExited(MouseEvent e) {
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }
