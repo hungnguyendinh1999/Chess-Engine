@@ -22,6 +22,7 @@ import java.awt.event.MouseMotionListener;
 
 public class UserInterface extends JPanel implements MouseListener, MouseMotionListener {
     static int x,y;
+    private final int TILESIZE = 75;
 
     public void paintComponent(Graphics G) {
         super.paintComponent(G);
@@ -29,26 +30,32 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
         // Set Board
-        // makeChessBoard();
+        makeChessBoard(G);
 
         // Drawing
-        G.setColor(Color.RED);
-        G.fillRect(x, y, 100, 200);
-        G.setColor(new Color(190, 81, 30));
-        G.fillRect(120, 20, 200, 100);
-        G.drawString("Hungover", x, y);
+//        G.setColor(Color.RED);
+//        G.fillRect(x, y, 100, 200);
+//        G.setColor(new Color(190, 81, 30));
+//        G.fillRect(120, 20, 200, 100);
+//        G.drawString("Hungover", x, y);
     }
 
     private void makeChessBoard(Graphics G) {
-
-        G.fillRect(0,0,500,500);
+        boolean black = true;
+        for (int i = 0; i < 8; i++) {
+            black = !black;
+            for (int j = 0; j < 8; j++) {
+                if (black) G.setColor(new Color());
+                else G.setColor(Color.WHITE);
+                G.fillRect(i * TILESIZE, j * TILESIZE, TILESIZE, TILESIZE);
+                black = !black;
+            }
+        }
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        x = e.getX();
-        y = e.getY();
-        repaint();
+
     }
 
     @Override
@@ -65,7 +72,9 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 
     @Override
     public void mouseDragged(MouseEvent e) {
-
+        x = e.getX();
+        y = e.getY();
+        repaint();
     }
 
     @Override
