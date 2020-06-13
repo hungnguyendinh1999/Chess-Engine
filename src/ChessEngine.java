@@ -1,3 +1,4 @@
+// Create based on https://en.wikipedia.org/wiki/Algebraic_notation_(chess)#Naming_the_pieces
 public class ChessEngine {
     /* NAMING THE PIECES
      *
@@ -9,6 +10,7 @@ public class ChessEngine {
      * and N for knight (since K is already used).
      * for coding, we use 'p' for Pawn
      */
+
     char[][] currentBoard = { // FOR NOW, WHITE IS CAPITALIZED, BLACK IS OTHER
             {'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
             {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
@@ -29,7 +31,6 @@ public class ChessEngine {
      * E.g. c5 (move a pawn to c5).
      *
      */
-
     public ChessEngine() { // later add parameter to indicate player is white or black
 
 

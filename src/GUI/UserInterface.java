@@ -2,15 +2,16 @@
  * Owner: Hung Dinh Nguyen
  * Email:  HungNguyen2@clarku.edu
  *
- * UserInterface.java to work on the front-end of the
+ * GUI.UserInterface.java to work on the front-end of the
  * chess engine. This includes:
  * 1. Board
- * 2. Chess Piece interaction (MouseListener)
- * 3. Possible Move of a clicked Chess Piece
+ * 2. GUI.Chess Piece interaction (MouseListener)
+ * 3. Possible Move of a clicked GUI.Chess Piece
  * 4. Graphic for 'Check'-ing a King
  * 5. Image of each chess piece
  *
  *******************************************************/
+package GUI;
 
 import org.w3c.dom.css.Rect;
 
@@ -31,6 +32,7 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
         this.addMouseMotionListener(this);
         // Set Board
         makeChessBoard(G);
+        initializePieces(G);
 
         // Drawing
 //        G.setColor(Color.RED);
@@ -45,24 +47,51 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
         for (int i = 0; i < 8; i++) {
             black = !black;
             for (int j = 0; j < 8; j++) {
-                if (black) G.setColor(new Color());
+                if (black) G.setColor(new Color(205,133,63));
                 else G.setColor(Color.WHITE);
-                G.fillRect(i * TILESIZE, j * TILESIZE, TILESIZE, TILESIZE);
+                G.fillRect(i * TILESIZE + 10, j * TILESIZE + 10, TILESIZE, TILESIZE);
                 black = !black;
             }
         }
     }
 
-    @Override
-    public void mouseMoved(MouseEvent e) {
+    private void initializePieces(Graphics G) {
+        G.setColor(Color.black);
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 2; j++) {
+                G.fillOval(i * TILESIZE + 15, j * TILESIZE + 15, TILESIZE-15, TILESIZE-15);
+            }
+        }
+
+        G.setColor(Color.BLUE);
+        for (int i = 0; i < 8; i++) {
+            for (int j = 6; j < 8; j++) {
+                G.fillOval(i * TILESIZE + 15, j * TILESIZE + 15, TILESIZE-15, TILESIZE-15);
+            }
+        }
 
     }
 
+    @Override
+    public void mouseMoved(MouseEvent e) {}
+
+    boolean clickedOnPiece = false;
+    /**
+     * Mouse click once: Piece Selection -> Show possible moves
+     * Mouse 2nd click: Move Piece (unless not possible -> reset)
+     * @param e MouseEvent
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         x = e.getX();
         y = e.getY();
         repaint();
+        if (clickedOnPiece) {
+
+        } else {
+            // check if x and y is in the suggested Tiles
+            // make a func returnTileClicked
+        }
     }
 
     @Override
@@ -83,12 +112,8 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 }
